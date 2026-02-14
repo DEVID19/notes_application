@@ -23,7 +23,7 @@ export const getNoteEditors = (noteId) => {
 
 // Socket.io connection handling
 io.on("connection", (socket) => {
-  console.log("✅ User connected:", socket.id);
+  console.log(" User connected:", socket.id);
 
   // User joins a note room
   socket.on("join-note", ({ noteId, userId, userName }) => {
@@ -45,7 +45,7 @@ io.on("connection", (socket) => {
       activeUsers: Object.keys(noteEditorsMap[noteId]).length,
     });
 
-    console.log(`📝 User ${userName} joined note: ${noteId}`);
+    console.log(` User ${userName} joined note: ${noteId}`);
   });
 
   // User leaves a note room
@@ -70,7 +70,7 @@ io.on("connection", (socket) => {
         : 0,
     });
 
-    console.log(`👋 User ${userId} left note: ${noteId}`);
+    console.log(` User ${userId} left note: ${noteId}`);
   });
 
   // Handle real-time note updates
@@ -85,7 +85,7 @@ io.on("connection", (socket) => {
       timestamp: new Date().toISOString(),
     });
 
-    console.log(`📤 Note ${noteId} updated by ${userName}`);
+    console.log(` Note ${noteId} updated by ${userName}`);
   });
 
   // Typing indicator - user started typing
@@ -125,7 +125,7 @@ io.on("connection", (socket) => {
       });
     });
 
-    console.log("❌ User disconnected:", socket.id);
+    console.log(" User disconnected:", socket.id);
   });
 });
 

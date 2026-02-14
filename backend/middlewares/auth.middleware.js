@@ -1,9 +1,7 @@
 import jwt from "jsonwebtoken";
 import User from "../models/user.model.js";
 
-// ============================================
-// PROTECT MIDDLEWARE - Check if user is logged in
-// ============================================
+
 export const Auth = async (req, res, next) => {
   try {
     let token = req.cookies.token;

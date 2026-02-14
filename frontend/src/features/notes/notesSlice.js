@@ -1,11 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axiosInstance from "../../api/axios";
 
-// ─────────────────────────────────────────
-// ASYNC THUNKS
-// ─────────────────────────────────────────
 
-// GET /api/notes/all — fetch all notes for sidebar/dashboard
 export const fetchNotes = createAsyncThunk(
   "notes/fetchAll",
   async (_, { rejectWithValue }) => {
@@ -171,9 +167,7 @@ export const fetchPublicNote = createAsyncThunk(
   },
 );
 
-// ─────────────────────────────────────────
-// INITIAL STATE
-// ─────────────────────────────────────────
+
 const initialState = {
   notes: [], // all notes list shown on dashboard
   currentNote: null, // the note currently open in the editor
@@ -189,9 +183,7 @@ const initialState = {
   searchResults: null, // null = not searching, [] = searched but empty
 };
 
-// ─────────────────────────────────────────
-// SLICE
-// ─────────────────────────────────────────
+
 const notesSlice = createSlice({
   name: "notes",
   initialState,

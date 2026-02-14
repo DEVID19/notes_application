@@ -1,3 +1,4 @@
+const isProduction = process.env.NODE_ENV === "production";
 import validator from "validator";
 import bcrypt from "bcryptjs";
 import User from "../models/user.model.js";
@@ -47,12 +48,19 @@ export const signup = async (req, res) => {
     });
 
     const token = await generateToken(user._id);
-
+    //* for devlopment
+    // res.cookie("token", token, {
+    //   httpOnly: true,
+    //   maxAge: 7 * 24 * 60 * 60 * 1000,
+    //   sameSite: "strict",
+    //   secure: false,
+    // });
+    //* for production
     res.cookie("token", token, {
       httpOnly: true,
       maxAge: 7 * 24 * 60 * 60 * 1000,
-      sameSite: "strict", // ← change Lax to strict
-      secure: false, // ← change true to false (we're on HTTP localhost)
+      sameSite: isProduction ? "None" : "Strict",
+      secure: isProduction,
     });
 
     res.status(201).json({
@@ -88,12 +96,19 @@ export const login = async (req, res) => {
     }
 
     const token = await generateToken(user._id);
-
+    //* for dev
+    // res.cookie("token", token, {
+    //   httpOnly: true,
+    //   maxAge: 7 * 24 * 60 * 60 * 1000,
+    //   sameSite: "strict",
+    //   secure: false,
+    // });
+    //* for production
     res.cookie("token", token, {
       httpOnly: true,
       maxAge: 7 * 24 * 60 * 60 * 1000,
-      sameSite: "strict", // ← change Lax to strict
-      secure: false, // ← change true to false (we're on HTTP localhost)
+      sameSite: isProduction ? "None" : "Strict",
+      secure: isProduction,
     });
 
     res.status(200).json({
@@ -112,10 +127,18 @@ export const login = async (req, res) => {
 
 export const logout = async (req, res) => {
   try {
+    //* for dev
+    // res.clearCookie("token", {
+    //   sameSite: "strict",
+    //   secure: false,
+    // });
+    //* for production
+
     res.clearCookie("token", {
-      sameSite: "strict", // ← change Lax to strict
-      secure: false,
+      sameSite: isProduction ? "None" : "Strict",
+      secure: isProduction,
     });
+
     return res.status(200).json({
       success: true,
       message: "logout successfully",

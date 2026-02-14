@@ -14,8 +14,7 @@ import {
   userStoppedTyping,
 } from "../features/notes/notesSlice";
 
-const SOCKET_URL = "http://localhost:8000";
-
+const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || "http://localhost:8000";
 const useSocket = (noteId) => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);

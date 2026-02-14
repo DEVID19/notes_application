@@ -1,8 +1,6 @@
 import Note from "../models/note.model.js";
 
-// ============================================
-// CHECK NOTE OWNER - Only note owner can proceed
-// ============================================
+
 export const checkNoteOwner = async (req, res, next) => {
   try {
     const note = await Note.findById(req.params.id);
@@ -34,9 +32,7 @@ export const checkNoteOwner = async (req, res, next) => {
   }
 };
 
-// ============================================
-// CHECK NOTE EDITOR - Owner or Editor can proceed
-// ============================================
+
 export const checkNoteEditor = async (req, res, next) => {
   try {
     const note = await Note.findById(req.params.id)
@@ -83,9 +79,7 @@ export const checkNoteEditor = async (req, res, next) => {
   }
 };
 
-// ============================================
-// CHECK NOTE VIEWER - Owner, Editor, or Viewer can proceed
-// ============================================
+
 export const checkNoteViewer = async (req, res, next) => {
   try {
     const note = await Note.findById(req.params.id)

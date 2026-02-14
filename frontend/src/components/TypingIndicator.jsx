@@ -1,4 +1,4 @@
-// TypingIndicator — shows "Alice is typing..." when a collaborator is typing
+
 // State used: state.notes.typingUsers (set by socket events)
 
 import { useSelector } from "react-redux";

@@ -1,11 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axiosInstance from "../../api/axios";
 
-// ─────────────────────────────────────────
-// ASYNC THUNKS (these call the backend API)
-// ─────────────────────────────────────────
 
-// Calls POST /api/auth/signup
 export const signupUser = createAsyncThunk(
   "auth/signup",
   async (formData, { rejectWithValue }) => {
@@ -18,7 +14,7 @@ export const signupUser = createAsyncThunk(
   },
 );
 
-// Calls POST /api/auth/login
+
 export const loginUser = createAsyncThunk(
   "auth/login",
   async (formData, { rejectWithValue }) => {
@@ -31,7 +27,7 @@ export const loginUser = createAsyncThunk(
   },
 );
 
-// Calls GET /api/auth/logout
+
 export const logoutUser = createAsyncThunk(
   "auth/logout",
   async (_, { rejectWithValue }) => {
@@ -43,9 +39,7 @@ export const logoutUser = createAsyncThunk(
   },
 );
 
-// ─────────────────────────────────────────
-// INITIAL STATE
-// ─────────────────────────────────────────
+
 const initialState = {
   user: null, // who is logged in? null = nobody
   isAuthenticated: false, // is user logged in? used by ProtectedRoute
@@ -53,9 +47,7 @@ const initialState = {
   error: null, // error message to show in the form
 };
 
-// ─────────────────────────────────────────
-// SLICE
-// ─────────────────────────────────────────
+
 const authSlice = createSlice({
   name: "auth",
   initialState,

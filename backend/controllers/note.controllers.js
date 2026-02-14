@@ -1,12 +1,6 @@
 import Note from "../models/note.model.js";
 
-// ===========================================
-// 1. CREATE NOTE
-// ===========================================
-// @desc    Create new note
-// @route   POST /api/notes
 
-// @access  Private (protect middleware)
 export const createNote = async (req, res) => {
   try {
     const { title, content } = req.body;
@@ -42,12 +36,7 @@ export const createNote = async (req, res) => {
   }
 };
 
-// ===========================================
-// 2. GET ALL NOTES
-// ===========================================
-// @desc    Get all notes for current user
-// @route   GET /api/notes
-// @access  Private (protect middleware)
+
 export const getNotes = async (req, res) => {
   try {
     const notes = await Note.find({
@@ -71,12 +60,7 @@ export const getNotes = async (req, res) => {
   }
 };
 
-// ===========================================
-// 3. GET SINGLE NOTE
-// ===========================================
-// @desc    Get single note by ID
-// @route   GET /api/notes/:id
-// @access  Private (protect + checkNoteViewer middleware)
+
 export const getNoteById = async (req, res) => {
   try {
     // Note is already fetched and checked by middleware
@@ -95,12 +79,7 @@ export const getNoteById = async (req, res) => {
   }
 };
 
-// ===========================================
-// 4. UPDATE NOTE
-// ===========================================
-// @desc    Update note
-// @route   PUT /api/notes/:id
-// @access  Private (protect + checkNoteEditor middleware)
+
 export const updateNote = async (req, res) => {
   try {
     const { title, content } = req.body;
@@ -133,12 +112,7 @@ export const updateNote = async (req, res) => {
   }
 };
 
-// ===========================================
-// 5. DELETE NOTE
-// ===========================================
-// @desc    Delete note
-// @route   DELETE /api/notes/:id
-// @access  Private (protect + checkNoteOwner middleware)
+
 export const deleteNote = async (req, res) => {
   try {
     // Note is already fetched by middleware
@@ -158,12 +132,7 @@ export const deleteNote = async (req, res) => {
   }
 };
 
-// ===========================================
-// 6. SEARCH NOTES
-// ===========================================
-// @desc    Search notes by title or content
-// @route   GET /api/notes/search?q=searchterm
-// @access  Private (protect middleware)
+
 export const searchNotes = async (req, res) => {
   try {
     const { q } = req.query;

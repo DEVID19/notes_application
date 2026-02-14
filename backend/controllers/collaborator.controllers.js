@@ -2,12 +2,7 @@ import Note from "../models/note.model.js";
 import User from "../models/user.model.js";
 import crypto from "crypto";
 
-// ===========================================
-// 1. ADD COLLABORATOR
-// ===========================================
-// @desc    Add collaborator to note with role
-// @route   POST /api/notes/:id/collaborators
-// @access  Private (protect + checkNoteOwner middleware)
+
 export const addCollaborator = async (req, res) => {
   try {
     const { email, role } = req.body;
@@ -87,12 +82,7 @@ export const addCollaborator = async (req, res) => {
   }
 };
 
-// ===========================================
-// 2. REMOVE COLLABORATOR
-// ===========================================
-// @desc    Remove collaborator from note
-// @route   DELETE /api/notes/:id/collaborators/:userId
-// @access  Private (protect + checkNoteOwner middleware)
+
 export const removeCollaborator = async (req, res) => {
   try {
     const { userId } = req.params;
@@ -138,12 +128,7 @@ export const removeCollaborator = async (req, res) => {
   }
 };
 
-// ===========================================
-// 3. UPDATE COLLABORATOR ROLE
-// ===========================================
-// @desc    Update collaborator's role
-// @route   PUT /api/notes/:id/collaborators/:userId
-// @access  Private (protect + checkNoteOwner middleware)
+
 export const updateCollaboratorRole = async (req, res) => {
   try {
     const { userId } = req.params;
@@ -194,12 +179,7 @@ export const updateCollaboratorRole = async (req, res) => {
   }
 };
 
-// ===========================================
-// 4. GENERATE PUBLIC SHARE LINK
-// ===========================================
-// @desc    Generate public share link for note
-// @route   POST /api/notes/:id/share
-// @access  Private (protect + checkNoteOwner middleware)
+
 export const generateShareLink = async (req, res) => {
   try {
     // Note is already fetched by middleware
@@ -230,12 +210,7 @@ export const generateShareLink = async (req, res) => {
   }
 };
 
-// ===========================================
-// 5. DISABLE PUBLIC SHARE LINK
-// ===========================================
-// @desc    Disable public access to note
-// @route   DELETE /api/notes/:id/share
-// @access  Private (protect + checkNoteOwner middleware)
+
 export const disableShareLink = async (req, res) => {
   try {
     // Note is already fetched by middleware
@@ -259,12 +234,7 @@ export const disableShareLink = async (req, res) => {
   }
 };
 
-// ===========================================
-// 6. GET PUBLIC NOTE (No Auth Required)
-// ===========================================
-// @desc    Get public note by token
-// @route   GET /api/notes/public/:token
-// @access  Public (No authentication needed)
+
 export const getPublicNote = async (req, res) => {
   try {
     const { token } = req.params;
